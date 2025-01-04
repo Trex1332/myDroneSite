@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
+<form action="" method="POST">
 {{form.hidden_tag()}}
 {{form.amount.label}}{{form.amount}}
 {{form.whatType.label}}{{form.whatType}}
 {{form.better.label}}{{form.better}}
 {{form.fav.label}}{{form.fav}}
-{{form.label}}
-
+{{form.submit}}
+</form>
 
 {% endblock %}

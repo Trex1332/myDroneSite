@@ -39,6 +39,7 @@ def yourdrones():
         session['better'] = form.better.data
         session['fav'] = form.fav.data
         
+        return redirect(url_for('results'))
     return render_template("urdrone.html",form=form)
 
 @app.route('/results')
