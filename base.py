@@ -4,7 +4,7 @@ from wtforms import StringField, IntegerField,SubmitField,RadioField, BooleanFie
 
 app = Flask(__name__)
 
-
+app.config['SECRET_KEY'] = 'key'
 
 ############
 #forms#
@@ -12,9 +12,13 @@ app = Flask(__name__)
 class drone(FlaskForm):
     amount = IntegerField("How Many Drones do you Have? ")
     whatType = RadioField("What types do you Fly? ",choices=[("fpv","FPV"),("Compat","Compact Portable"),("both","Both")])
-    better = BooleanField("which one do you prefer? ",choices=[("fpv","FPV"),("Compat","Compact Portable")])
+    better = RadioField("which one do you prefer? ",choices=[("fpv","FPV"),("Compat","Compact Portable")])
     fav = StringField("Favorite drone you have: ")
     submit = SubmitField("Submit")
+
+################
+
+
 @app.route('/')
 def index():
     return render_template("home.html")
@@ -24,9 +28,18 @@ def index():
 def mydrones():
     return render_template("mydrones.html")
 
-@app.route('/yourdrones')
+@app.route('/yourdrones',methods =("GET","POST"))
 def yourdrones():
-    return render_template("urdrone.html")
+
+    form = drone()
+
+    if form.validate_on_submit():
+        session['amount']=form.amount.data
+        session['type'] = form.whatType.data
+        session['better'] = form.better.data
+        session['fav'] = form.fav.data
+        
+    return render_template("urdrone.html",form=form)
 
 @app.route('/results')
 def results():
