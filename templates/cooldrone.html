@@ -1,5 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div id="why2">
+        <h2>Thanks for sharing</h2>
+        <br>
+        {% if session['amount'] > 4 %}
+            <h4>wow thats more drones than me!!</h4>
+        {% else %}
+            <h4>Ah not to far off the amount i have.</h4>
+        {% endif %}
+        <br>
     
+
+        {% if session['type'] == "fpv" %}
+        <h4>FPV if fun but having both peronaly is amazing.</h4>
+            
+        {% elif session['type'] == "Compact" %}
+        <h4>Compact if fun but having both peronaly is amazing.</h4>
+        {% else %}
+        <h4>Both is great as your able to have the best of both worlds.</h4>
+        {% endif %}
+        <br>
+
+        {% if session['better'] == "fpv" %}
+        <h4>FPV if fun as you can get amzing shots as well do amazing stunts.</h4>
+            
+        {% elif session['better'] == "Compact" %}
+        <h4>Compact if fun as you can take it anywhere and get amzing pictures</h4>
+        {% else %}
+        <h4>Both is great as your able to have the best of both worlds.</h4>
+        {% endif %}
+        <br>
+        <h4>your fave is {{session['fav']}}</h4>
+
+    </div>
 {% endblock %}

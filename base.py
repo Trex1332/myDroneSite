@@ -12,7 +12,7 @@ app.config['SECRET_KEY'] = 'key'
 class drone(FlaskForm):
     amount = IntegerField("How Many Drones do you Have? ")
     whatType = RadioField("What types do you Fly? ",choices=[("fpv","FPV"),("Compat","Compact Portable"),("both","Both")])
-    better = RadioField("which one do you prefer? ",choices=[("fpv","FPV"),("Compat","Compact Portable")])
+    better = RadioField("which one do you prefer? ",choices=[("fpv","FPV"),("Compact","Compact Portable")])
     fav = StringField("Favorite drone you have: ")
     submit = SubmitField("Submit")
 

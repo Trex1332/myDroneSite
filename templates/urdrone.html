@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div id="why2">
+    <h2 class="title">What drone do you fly?</h2>
 <form action="" method="POST">
 {{form.hidden_tag()}}
-{{form.amount.label}}{{form.amount}}
+{{form.amount.label}} <span>  </span>{{form.amount}}
+<br>
+<br>
 {{form.whatType.label}}{{form.whatType}}
+<br>
 {{form.better.label}}{{form.better}}
-{{form.fav.label}}{{form.fav}}
+<br>
+{{form.fav.label}}<span>  </span>{{form.fav}}
+<br>
+<br>
 {{form.submit}}
 </form>
+</div>
 
 {% endblock %}
